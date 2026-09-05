@@ -38,9 +38,12 @@ Then load the included track definition and transform an array of
 `(latitude, longitude)` samples:
 
 ```python
+import numpy as np
+
 from horse_racing.track.track import RaceTrack
 
 track = RaceTrack.from_directory("track_data/AQU")
+coordinates = np.loadtxt("track_data/AQU/side_1.txt", delimiter=",")
 distance, offset, curvature = track(
     coordinates,
     track_id="D",
@@ -49,7 +52,8 @@ distance, offset, curvature = track(
 ```
 
 See the rendered [track-transformation notebook](notebooks/transforming_the_track.ipynb)
-for the geometric motivation and visual results.
+for the geometric motivation and visual results. Its saved outputs can be viewed
+without downloading the competition data.
 
 ## Data and project status
 
