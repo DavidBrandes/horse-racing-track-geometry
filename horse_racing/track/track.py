@@ -247,7 +247,9 @@ class RaceTrack:
         elif colorize_by == "curvature":
             colors = curvature[..., :-1]
         else:
-            colors = np.broadcast_to(np.arange(len(points)).reshape(-1, 1), distance.shape)
+            colors = np.broadcast_to(
+                np.arange(len(points)).reshape(-1, 1), distance[..., :-1].shape
+            )
         
         min_value, max_value = np.min(colors), np.max(colors)
         points = np.expand_dims(points, axis=2)
@@ -279,7 +281,3 @@ class RaceTrack:
         points = geography.to_xy(coords[..., 0], coords[..., 1], *self._origin)
         
         return self._evaluate(points, track_id, finish_line_id, run_in_id)
-        
-        
-        
-        

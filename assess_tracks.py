@@ -30,11 +30,11 @@ class Context:
     def __enter__(self):
         return self
     
-    def __exit__(self, exec_type, exec_value, exec_traceback):
+    def __exit__(self, exc_type, exc_value, exc_traceback):
         with open(self.data_path, 'w') as f:
             json.dump(self.data, f)
             
-        return True
+        return False
 
 
 track_dir_path = "./track_data/AQU"
@@ -100,8 +100,6 @@ with Context(output_json_path) as data_context:
                     value = {"use": True, "run_in": course_type}
                 elif x == "q":
                     raise KeyboardInterrupt()
-                else:
-                    value = True
             
-            if type(value) is dict:
+            if isinstance(value, dict):
                 data_context(key, value)
