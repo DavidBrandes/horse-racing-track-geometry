@@ -1,3 +1,5 @@
+"""Plot the fitted Aqueduct track alongside an example race trajectory."""
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt

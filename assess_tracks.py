@@ -1,3 +1,5 @@
+"""Interactively review fitted tracks against the original race trajectories."""
+
 import pandas as pd
 import numpy as np
 import json
